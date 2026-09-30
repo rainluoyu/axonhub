@@ -921,9 +921,21 @@ func TestCodexOutbound_FastModelAlias(t *testing.T) {
 			wantHint:      "model=gpt-6-sol;tier=flex",
 		},
 		{
+			name:          "gpt-6.1-sol fast alias selects priority",
+			model:         "gpt-6.1-sol-fast",
+			upstreamModel: "gpt-6.1-sol",
+			wantTier:      "priority",
+			wantHint:      "model=gpt-6.1-sol;tier=priority",
+		},
+		{
 			name:          "ordinary model stays ordinary",
 			model:         "gpt-6-sol",
 			upstreamModel: "gpt-6-sol",
+		},
+		{
+			name:          "gpt-6.1-sol stays ordinary",
+			model:         "gpt-6.1-sol",
+			upstreamModel: "gpt-6.1-sol",
 		},
 		{
 			name:          "auto review has no fast behavior",
