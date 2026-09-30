@@ -7,6 +7,7 @@ on:
 
 jobs:
   prepare:
+    if: github.repository == 'looplj/axonhub'
     name: Pin commit & date
     runs-on: ubuntu-slim
     permissions:

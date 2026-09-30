@@ -11,6 +11,7 @@ on:
 
 jobs:
   build_single_arch:
+    if: github.repository == 'looplj/axonhub'
     name: Build & push (${{ matrix.arch }}) [native]
     strategy:
       fail-fast: false
@@ -75,10 +76,10 @@ jobs:
           sbom: false
 
   create_manifests:
+    if: github.repository == 'looplj/axonhub' && startsWith(github.ref, 'refs/tags/')
     name: Create multi-arch manifests (Docker Hub)
     needs: [build_single_arch]
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Extract tag
         run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV

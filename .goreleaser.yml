@@ -30,34 +30,8 @@ builds:
         - ./scripts/verify-go-sse-dependency.sh "{{ .Path }}"
     goos:
       - linux
-      - windows
-      - darwin
-      - freebsd
     goarch:
       - amd64
-      - arm64
-      - loong64
-    goarm:
-      - 7
-    ignore:
-      - goos: windows
-        goarch: arm
-      - goos: windows
-        goarch: s390x
-      - goos: windows
-        goarch: loong64
-      - goos: darwin
-        goarch: arm
-      - goos: darwin
-        goarch: s390x
-      - goos: darwin
-        goarch: loong64
-      - goos: freebsd
-        goarch: arm
-      - goos: freebsd
-        goarch: s390x
-      - goos: freebsd
-        goarch: loong64
 
 release:
   draft: false
@@ -81,28 +55,6 @@ archives:
         dst: restart.sh
       - src: deploy/upgrade.sh
         dst: upgrade.sh
-        
-      - src: deploy/install.ps1
-        dst: install.ps1
-      - src: deploy/start.ps1
-        dst: start.ps1
-      - src: deploy/stop.ps1
-        dst: stop.ps1
-      - src: deploy/restart.ps1
-        dst: restart.ps1
-      - src: deploy/upgrade.ps1
-        dst: upgrade.ps1
-
-      - src: deploy/install.bat
-        dst: install.bat
-      - src: deploy/start.bat
-        dst: start.bat
-      - src: deploy/stop.bat
-        dst: stop.bat
-      - src: deploy/restart.bat
-        dst: restart.bat
-      - src: deploy/upgrade.bat
-        dst: upgrade.bat
 
 checksum:
   name_template: 'checksums.txt'
